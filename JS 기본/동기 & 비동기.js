@@ -31,4 +31,41 @@ taskC(14, (res) => {
     console.log("C TASK RESULT : ", res);
 });
 
+// callback hell
+taskA(4, 5, (a_res) => {
+    console.log("A RESULT : ", a_res);
+    taskB(a_res, (b_res) => {
+        console.log("B RESULT : ", b_res);
+        taskC(b_res, (c_res) => {
+            console.log("C RESULT : ", c_res)
+        });
+    });
+});
+
 console.log("코드 끝");
+
+
+function one() {
+    return 1;
+}
+
+function two() {
+    return one() + 1;
+}
+
+function three() {
+    return two() + 1;
+}
+
+console.log(three());
+
+function asyncAdd(a, b, cd) {
+    setTimeout(() => {
+        const res = a + b;
+        cd(res);
+    }, 3000);
+}
+
+asyncAdd(1, 3, (res) => {
+    console.log("결과 : ", res);
+});
